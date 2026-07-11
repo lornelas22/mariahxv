@@ -970,6 +970,24 @@ grid-template-columns:1fr;
 
     }
 
+   .hero-content h1{
+
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(5rem, 9vw, 7rem);
+    font-weight: 400;
+
+    color: #F7E7B5;
+
+    margin: 15px 0;
+
+    line-height: .9;
+
+    text-shadow:
+        0 0 10px rgba(212,175,55,.35),
+        0 0 30px rgba(212,175,55,.15);
+
+}
+
     .hero-logo{
 
         margin:0 auto 30px;
