@@ -123,16 +123,6 @@ body{
 
 }
 
-.hero h1{
-
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:6rem;
-
-    line-height:1;
-
-}
-
 .hero-divider{
 
     display:flex;
@@ -972,19 +962,24 @@ grid-template-columns:1fr;
 
    .hero-content h1{
 
-    font-family: 'Great Vibes', cursive;
-    font-size: clamp(5rem, 9vw, 7rem);
-    font-weight: 400;
+    font-family:"Cormorant Garamond", serif;
+    font-style:italic;
+    font-weight:700;
 
-    color: #F7E7B5;
+    font-size:clamp(5.5rem,9vw,7rem);
 
-    margin: 15px 0;
+    line-height:.95;
 
-    line-height: .9;
+    letter-spacing:-2px;
+
+    margin:20px 0 30px;
+
+    color:#D4AF37;
 
     text-shadow:
-        0 0 10px rgba(212,175,55,.35),
-        0 0 30px rgba(212,175,55,.15);
+        0 1px 0 #fff6cf,
+        0 2px 4px rgba(0,0,0,.35),
+        0 0 12px rgba(212,175,55,.25);
 
 }
 
@@ -1054,5 +1049,36 @@ grid-template-columns:1fr;
         transform:translateX(-50%);
 
     }
+
+}
+
+@keyframes goldShine{
+
+    0%{
+
+        background-position:-300px;
+
+    }
+
+    100%{
+
+        background-position:300px;
+
+    }
+
+}
+
+.mariah-logo{
+
+    width: 120%;
+    max-width: 520px;
+
+    display:block;
+
+    margin:0 auto 20px;
+
+    transform:translateX(-35px);
+
+    filter:drop-shadow(0 8px 25px rgba(212,175,55,.35));
 
 }
