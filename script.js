@@ -1,102 +1,113 @@
-const openBtn = document.getElementById("openBtn");
+console.log("Script loaded!");
+// View Invitation Button
 
-if (openBtn) {
-    openBtn.addEventListener("click", () => {
+const button = document.getElementById("viewInvitation");
+const music = document.getElementById("bgMusic");
 
-        const countdown = document.getElementById("countdown");
+console.log(button);
+console.log(music);
 
-const y =
-    countdown.getBoundingClientRect().top +
-    window.pageYOffset -
-    120;
+if (button && music) {
 
-window.scrollTo({
-    top: y,
-    behavior: "smooth"
-});
+    button.addEventListener("click", async () => {
+
+        try {
+
+            if (music.paused) {
+
+                music.volume = 0;
+
+                await music.play();
+
+                let fade = setInterval(() => {
+
+                    if (music.volume < 0.95) {
+
+                        music.volume += 0.05;
+
+                    } else {
+
+                        music.volume = 1;
+
+                        clearInterval(fade);
+
+                    }
+
+                }, 120);
+
+            }
+
+        } catch (err) {
+
+            console.error("Music error:", err);
+
+        }
+
+        document.querySelector(".countdown").scrollIntoView({
+
+            behavior: "smooth"
+
+        });
+
     });
-}
 
-// Countdown
+}
 
 const targetDate = new Date("November 14, 2026 17:00:00").getTime();
 
-function updateCountdown(){
+function updateCountdown() {
 
     const now = new Date().getTime();
 
     const distance = targetDate - now;
 
+    if (distance < 0) return;
+
     document.getElementById("days").textContent =
-        Math.floor(distance/(1000*60*60*24));
+        Math.floor(distance / (1000 * 60 * 60 * 24));
 
     document.getElementById("hours").textContent =
-        Math.floor((distance%(1000*60*60*24))/(1000*60*60))
-        .toString().padStart(2,"0");
+        String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, "0");
 
     document.getElementById("minutes").textContent =
-        Math.floor((distance%(1000*60*60))/(1000*60))
-        .toString().padStart(2,"0");
+        String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, "0");
 
     document.getElementById("seconds").textContent =
-        Math.floor((distance%(1000*60))/1000)
-        .toString().padStart(2,"0");
+        String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, "0");
 
 }
 
 updateCountdown();
+setInterval(updateCountdown, 1000);
 
-setInterval(updateCountdown,1000);
+// Luxury Gold Dust
 
-// Gallery Lightbox
+const sparkleContainer = document.querySelector(".sparkles");
 
-const galleryImages = document.querySelectorAll(".gallery-grid img");
-const lightbox = document.getElementById("lightbox");
-const lightboxImage = document.getElementById("lightbox-image");
+for(let i = 0; i < 60; i++){
 
-galleryImages.forEach(img => {
+    const s = document.createElement("div");
 
-    img.addEventListener("click", () => {
+    s.classList.add("sparkle");
 
-        lightboxImage.src = img.src;
+    const size = Math.random()*4 + 1;
 
-        lightbox.classList.add("show");
+    s.style.width = size + "px";
+    s.style.height = size + "px";
 
-    });
+    s.style.left = Math.random()*100 + "%";
 
-});
+    s.style.animationDuration =
+        (Math.random()*12 + 14) + "s," +
+        (Math.random()*2 + 2) + "s";
 
-lightbox.addEventListener("click", () => {
+    s.style.animationDelay =
+        (-Math.random()*20) + "s," +
+        (-Math.random()*4) + "s";
 
-    lightbox.classList.remove("show");
+    s.style.opacity =
+        Math.random()*0.6 + 0.15;
 
-});
+    sparkleContainer.appendChild(s);
 
-
-// Scroll Animations
-
-const fadeElements = document.querySelectorAll(".fade-up");
-
-const observer = new IntersectionObserver((entries) => {
-
-    entries.forEach(entry => {
-
-        if (entry.isIntersecting) {
-
-            entry.target.classList.add("show");
-
-        }
-
-    });
-
-}, {
-
-    threshold: 0.2
-
-});
-
-fadeElements.forEach(section => {
-
-    observer.observe(section);
-
-});
+}
