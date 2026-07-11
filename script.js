@@ -3,45 +3,57 @@ console.log("Script loaded!");
 
 const enterButton = document.getElementById("enterButton");
 const welcomeScreen = document.getElementById("welcomeScreen");
+const mainContent = document.getElementById("mainContent");
+const logo = document.querySelector(".welcome-logo");
 const music = document.getElementById("bgMusic");
 
 if (enterButton && music) {
 
     enterButton.addEventListener("click", async () => {
 
-        // Fade out the welcome screen
+    enterButton.disabled = true;
+
+    logo.style.animation = "logoBurst .8s ease";
+
+    setTimeout(() => {
+
         welcomeScreen.classList.add("hide");
 
-        try {
+        mainContent.classList.add("show");
 
-            music.volume = 0;
+    },600);
 
-            await music.play();
+    try{
 
-            let fade = setInterval(() => {
+        music.volume = 0;
 
-                if (music.volume < 0.95) {
+        await music.play();
 
-                    music.volume += 0.05;
+        let fade = setInterval(()=>{
 
-                } else {
+            if(music.volume < .95){
 
-                    music.volume = 1;
-                    clearInterval(fade);
+                music.volume += .05;
 
-                }
+            }else{
 
-            }, 120);
+                music.volume = 1;
 
-        } catch (err) {
+                clearInterval(fade);
 
-            console.log("Music couldn't start:", err);
+            }
 
-        }
+        },120);
 
-    });
+    }catch(err){
 
-}
+        console.log(err);
+
+    }
+
+});
+
+}   //
 
 const targetDate = new Date("November 14, 2026 17:00:00").getTime();
 

@@ -1099,8 +1099,29 @@ grid-template-columns:1fr;
 }
 
 #welcomeScreen.hide{
+
     opacity:0;
     visibility:hidden;
+    pointer-events:none;
+
+}
+
+#mainContent{
+
+    opacity:0;
+    transform:scale(.985);
+
+    transition:
+        opacity 1.2s ease,
+        transform 1.2s ease;
+
+}
+
+#mainContent.show{
+
+    opacity:1;
+    transform:scale(1);
+
 }
 
 .welcome-content{
@@ -1122,10 +1143,16 @@ grid-template-columns:1fr;
 }
 
 .welcome-logo{
+
     width:100%;
     max-width:420px;
+
     display:block;
-    margin:0 auto 25px;
+
+    margin:0 auto 20px;
+
+    animation:logoGlow 3.5s ease-in-out infinite;
+
 }
 
 .welcome-date{
@@ -1149,4 +1176,124 @@ grid-template-columns:1fr;
 #enterButton:hover{
     transform:translateY(-3px);
     box-shadow:0 12px 30px rgba(212,175,55,.35);
+}
+
+#enterButton:active{
+
+    transform:scale(.96);
+
+}
+
+.welcome-title{
+
+    color:#D4AF37;
+
+    font-family:"Cinzel", serif;
+
+    font-size:2rem;
+
+    font-weight:600;
+
+    letter-spacing:8px;
+
+    margin:-10px 0 25px;
+
+    animation:goldGlow 3.5s ease-in-out infinite;
+
+}
+
+@keyframes goldGlow{
+
+    0%,100%{
+
+        text-shadow:
+            0 0 6px rgba(255,215,100,.35),
+            0 0 15px rgba(212,175,55,.25);
+
+    }
+
+    50%{
+
+        text-shadow:
+            0 0 12px #ffe48a,
+            0 0 24px rgba(255,215,0,.60),
+            0 0 40px rgba(212,175,55,.35);
+
+    }
+
+}
+
+/* ===========================
+   LUXURY GOLD GLOW
+=========================== */
+
+@keyframes goldGlow{
+
+    0%,100%{
+
+        text-shadow:
+            0 0 6px rgba(255,215,120,.30),
+            0 0 14px rgba(212,175,55,.25);
+
+    }
+
+    50%{
+
+        text-shadow:
+            0 0 12px rgba(255,240,180,.85),
+            0 0 24px rgba(255,215,0,.55),
+            0 0 42px rgba(212,175,55,.35);
+
+    }
+
+}
+
+@keyframes logoGlow{
+
+    0%,100%{
+
+        filter:
+            drop-shadow(0 0 8px rgba(212,175,55,.20));
+
+    }
+
+    50%{
+
+        filter:
+            drop-shadow(0 0 12px rgba(255,240,180,.35))
+            drop-shadow(0 0 24px rgba(212,175,55,.30))
+            drop-shadow(0 0 40px rgba(212,175,55,.18));
+
+    }
+
+}
+
+@keyframes logoBurst{
+
+    0%{
+
+        transform:scale(1);
+
+        filter:
+            drop-shadow(0 0 8px rgba(212,175,55,.25));
+
+    }
+
+    50%{
+
+        transform:scale(1.05);
+
+        filter:
+            drop-shadow(0 0 15px rgba(255,240,180,.8))
+            drop-shadow(0 0 35px rgba(212,175,55,.6))
+            drop-shadow(0 0 60px rgba(212,175,55,.35));
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
 }
