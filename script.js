@@ -1,53 +1,43 @@
 console.log("Script loaded!");
 // View Invitation Button
 
-const button = document.getElementById("viewInvitation");
+const enterButton = document.getElementById("enterButton");
+const welcomeScreen = document.getElementById("welcomeScreen");
 const music = document.getElementById("bgMusic");
 
-console.log(button);
-console.log(music);
+if (enterButton && music) {
 
-if (button && music) {
+    enterButton.addEventListener("click", async () => {
 
-    button.addEventListener("click", async () => {
+        // Fade out the welcome screen
+        welcomeScreen.classList.add("hide");
 
         try {
 
-            if (music.paused) {
+            music.volume = 0;
 
-                music.volume = 0;
+            await music.play();
 
-                await music.play();
+            let fade = setInterval(() => {
 
-                let fade = setInterval(() => {
+                if (music.volume < 0.95) {
 
-                    if (music.volume < 0.95) {
+                    music.volume += 0.05;
 
-                        music.volume += 0.05;
+                } else {
 
-                    } else {
+                    music.volume = 1;
+                    clearInterval(fade);
 
-                        music.volume = 1;
+                }
 
-                        clearInterval(fade);
-
-                    }
-
-                }, 120);
-
-            }
+            }, 120);
 
         } catch (err) {
 
-            console.error("Music error:", err);
+            console.log("Music couldn't start:", err);
 
         }
-
-        document.querySelector(".countdown").scrollIntoView({
-
-            behavior: "smooth"
-
-        });
 
     });
 
