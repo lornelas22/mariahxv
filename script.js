@@ -86,13 +86,18 @@ setInterval(updateCountdown, 1000);
 
 const sparkleContainer = document.querySelector(".sparkles");
 
-for(let i = 0; i < 60; i++){
+for(let i = 0; i < 120; i++){
 
     const s = document.createElement("div");
+    if (Math.random() < 0.12) {
+
+    s.classList.add("sparkle-star");
+
+}
 
     s.classList.add("sparkle");
 
-    const size = Math.random()*4 + 1;
+    const size = Math.random()*3 + .8;
 
     s.style.width = size + "px";
     s.style.height = size + "px";
@@ -100,15 +105,15 @@ for(let i = 0; i < 60; i++){
     s.style.left = Math.random()*100 + "%";
 
     s.style.animationDuration =
-        (Math.random()*12 + 14) + "s," +
-        (Math.random()*2 + 2) + "s";
+        (Math.random()*18 + 18) + "s," +
+        (Math.random()*3 + 3) + "s";
 
     s.style.animationDelay =
         (-Math.random()*20) + "s," +
         (-Math.random()*4) + "s";
 
     s.style.opacity =
-        Math.random()*0.6 + 0.15;
+        Math.random()*0.45 + 0.25;
 
     sparkleContainer.appendChild(s);
 

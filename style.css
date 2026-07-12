@@ -44,11 +44,11 @@ body{
 
     inset:0;
 
-    pointer-events:none;
-
     overflow:hidden;
 
-    z-index:0;
+    pointer-events:none;
+
+    z-index:9998;
 
 }
 
@@ -1098,6 +1098,14 @@ grid-template-columns:1fr;
     transition:opacity .8s ease, visibility .8s ease;
 }
 
+.welcome-content{
+
+    position:relative;
+
+    z-index:10000;
+
+}
+
 #welcomeScreen.hide{
 
     opacity:0;
@@ -1162,25 +1170,67 @@ grid-template-columns:1fr;
 }
 
 #enterButton{
-    background:#D4AF37;
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:linear-gradient(
+        180deg,
+        #E8C85A 0%,
+        #D4AF37 55%,
+        #C99A1C 100%
+    );
+
     color:#081d3d;
+
     border:none;
-    padding:18px 55px;
-    border-radius:999px;
-    font-size:1rem;
-    font-weight:700;
+
+    border-radius:60px;
+
+    padding:18px 60px;
+
     cursor:pointer;
-    transition:.3s;
+
+    font-family:"Luxurious Script", cursive;
+
+    font-size:2.2rem;
+
+    font-weight:400;
+
+    letter-spacing:0;
+
+    text-transform:none;
+
+    transition:all .35s ease;
+
+    box-shadow:
+        0 12px 30px rgba(212,175,55,.35);
+
 }
 
 #enterButton:hover{
-    transform:translateY(-3px);
-    box-shadow:0 12px 30px rgba(212,175,55,.35);
+
+    transform:translateY(-4px) scale(1.03);
+
+    background:linear-gradient(
+        180deg,
+        #F8DD7A,
+        #E1BE4B,
+        #D4AF37
+    );
+
+    box-shadow:
+        0 0 18px rgba(255,220,120,.45),
+        0 15px 40px rgba(0,0,0,.30);
+
+    color:#04172D;
+
 }
 
 #enterButton:active{
 
-    transform:scale(.96);
+    transform:scale(.97);
 
 }
 
@@ -1297,3 +1347,143 @@ grid-template-columns:1fr;
     }
 
 }
+
+.welcome-content{
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+/* Luxury Twinkling Stars */
+
+.sparkle-star{
+
+    width:4px !important;
+    height:4px !important;
+
+    background:#FFF8D0;
+
+    border-radius:50%;
+
+    box-shadow:
+        0 0 6px #FFF4B5,
+        0 0 14px #FFE37A,
+        0 0 28px rgba(255,215,0,.75);
+
+    animation:
+        sparkleFall linear infinite,
+        twinkleStar 2.5s ease-in-out infinite;
+
+@keyframes twinkleStar{
+
+    0%,100%{
+
+        opacity:.35;
+
+        transform:scale(.8);
+
+    }
+
+    50%{
+
+        opacity:1;
+
+        transform:scale(1.8);
+
+        #enterButton::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:-150%;
+
+    width:60%;
+
+    height:100%;
+
+    background:linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        rgba(255,255,255,.45),
+
+        transparent
+
+    );
+
+    transform:skewX(-25deg);
+
+    animation:buttonShine 5s infinite;
+
+}
+
+@keyframes buttonShine{
+
+    0%{
+
+        left:-150%;
+
+    }
+
+    30%{
+
+        left:160%;
+
+    }
+
+    100%{
+
+        left:160%;
+
+    }
+
+}
+
+#enterButton::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-150%;
+
+    width:40%;
+    height:100%;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.6),
+        transparent
+    );
+
+    transform:skewX(-25deg);
+
+    animation:luxuryShine 6s infinite;
+
+}
+
+@keyframes luxuryShine{
+
+    0%{
+        left:-150%;
+    }
+
+    15%{
+        left:160%;
+    }
+
+    100%{
+        left:160%;
+    }
+
+}
+
