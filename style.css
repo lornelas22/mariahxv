@@ -38,20 +38,6 @@ body{
    FLOATING GOLD PARTICLES
 =========================== */
 
-.sparkles{
-
-    position:fixed;
-
-    inset:0;
-
-    overflow:hidden;
-
-    pointer-events:none;
-
-    z-index:9998;
-
-}
-
 .sparkles span{
 
     position:absolute;
@@ -842,16 +828,16 @@ grid-template-columns:1fr;
 .sparkles{
 
     position:fixed;
+
     inset:0;
 
     overflow:hidden;
 
     pointer-events:none;
 
-    z-index:1;
+    z-index:9998;
 
 }
-
 .sparkle{
 
     position:absolute;
@@ -1090,7 +1076,7 @@ grid-template-columns:1fr;
 #welcomeScreen{
     position:fixed;
     inset:0;
-    background:#0d2d5c;
+    background:transparent;
     display:flex;
     justify-content:center;
     align-items:center;
@@ -1206,6 +1192,8 @@ grid-template-columns:1fr;
 
     box-shadow:
         0 12px 30px rgba(212,175,55,.35);
+
+    animation:textGlow 3s ease-in-out infinite;
 
 }
 
@@ -1354,9 +1342,9 @@ grid-template-columns:1fr;
 
     z-index:2;
 
-}
+  }
 
-/* Luxury Twinkling Stars */
+
 
 .sparkle-star{
 
@@ -1376,12 +1364,13 @@ grid-template-columns:1fr;
         sparkleFall linear infinite,
         twinkleStar 2.5s ease-in-out infinite;
 
+}        
+
 @keyframes twinkleStar{
 
     0%,100%{
 
         opacity:.35;
-
         transform:scale(.8);
 
     }
@@ -1389,10 +1378,13 @@ grid-template-columns:1fr;
     50%{
 
         opacity:1;
-
         transform:scale(1.8);
 
-        #enterButton::before{
+    }
+
+}   
+
+#enterButton::before{
 
     content:"";
 
@@ -1407,15 +1399,10 @@ grid-template-columns:1fr;
     height:100%;
 
     background:linear-gradient(
-
         90deg,
-
         transparent,
-
         rgba(255,255,255,.45),
-
         transparent
-
     );
 
     transform:skewX(-25deg);
@@ -1487,3 +1474,74 @@ grid-template-columns:1fr;
 
 }
 
+@keyframes buttonGlow{
+
+    0%,100%{
+
+        box-shadow:
+            0 0 10px rgba(212,175,55,.20),
+            0 0 25px rgba(212,175,55,.12);
+
+        border-color:#D4AF37;
+
+        text-shadow:
+            0 0 4px rgba(255,220,120,.15);
+
+    }
+
+    50%{
+
+        box-shadow:
+            0 0 18px rgba(255,220,120,.55),
+            0 0 35px rgba(255,215,0,.35),
+            0 0 60px rgba(212,175,55,.18);
+
+        border-color:#FFE89A;
+
+        text-shadow:
+            0 0 8px rgba(255,245,180,.6),
+            0 0 18px rgba(255,220,120,.35);
+
+    }
+
+}
+
+@keyframes testGlow{
+
+    0%{
+        transform:scale(1);
+        background:red;
+    }
+
+    50%{
+        transform:scale(1.1);
+        background:lime;
+    }
+
+    100%{
+        transform:scale(1);
+        background:red;
+    }
+
+}
+
+@keyframes textGlow{
+
+    0%,100%{
+
+        text-shadow:
+            0 0 3px rgba(255,220,120,.25),
+            0 0 8px rgba(212,175,55,.15);
+
+    }
+
+    50%{
+
+        text-shadow:
+            0 0 8px rgba(255,245,180,.9),
+            0 0 18px rgba(255,220,120,.6),
+            0 0 30px rgba(212,175,55,.4);
+
+    }
+
+}
