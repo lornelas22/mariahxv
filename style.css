@@ -198,14 +198,6 @@ button{
 
 button:hover{
 
-    transform:translateY(-5px);
-
-    box-shadow:0 20px 45px rgba(212,175,55,.45);
-
-}
-
-button:hover{
-
     transform:translateY(-4px);
 
     box-shadow:0 15px 40px rgba(212,175,55,.4);
@@ -441,9 +433,34 @@ grid-template-columns:1fr;
 
 .icon{
 
-    font-size:2.5rem;
+    font-size:2.4rem;
 
-    margin-bottom:20px;
+    color:var(--gold);
+
+    margin-bottom:24px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-shadow:
+        0 0 8px rgba(255,220,120,.45),
+        0 0 16px rgba(212,175,55,.25);
+
+    transition:.35s ease;
+
+}
+
+.detail-card:hover .icon{
+
+    transform:scale(1.08);
+
+    text-shadow:
+        0 0 10px rgba(255,240,180,.9),
+        0 0 24px rgba(255,215,0,.55),
+        0 0 40px rgba(212,175,55,.35);
 
 }
 
@@ -614,7 +631,12 @@ grid-template-columns:1fr;
 
     z-index:2;
 
-    animation:goldGlow 2.5s ease-in-out infinite;
+    box-shadow:
+        0 0 8px rgba(255,220,120,.8),
+        0 0 18px rgba(255,215,0,.55),
+        0 0 35px rgba(212,175,55,.4);
+
+    animation:timelineDotGlow 2.5s ease-in-out infinite;
 
 }
 
@@ -721,32 +743,6 @@ grid-template-columns:1fr;
 
 }
 
-@keyframes goldGlow{
-
-    0%,100%{
-
-        transform:translateX(-50%) scale(1);
-
-        box-shadow:
-            0 0 8px rgba(212,175,55,.8),
-            0 0 18px rgba(212,175,55,.7),
-            0 0 35px rgba(212,175,55,.45);
-
-    }
-
-    50%{
-
-        transform:translateX(-50%) scale(1.18);
-
-        box-shadow:
-            0 0 15px rgba(255,215,0,1),
-            0 0 30px rgba(255,215,0,.9),
-            0 0 55px rgba(255,215,0,.7);
-
-    }
-
-}
-
 /* ==========================================
    LAYERING
 ========================================== */
@@ -842,6 +838,8 @@ grid-template-columns:1fr;
 
     position:absolute;
 
+    top:-120px;
+
     border-radius:50%;
 
     background:radial-gradient(circle,
@@ -851,9 +849,7 @@ grid-template-columns:1fr;
 
     filter:blur(.3px);
 
-    animation:
-        sparkleFall linear infinite,
-        twinkle ease-in-out infinite;
+    animation:sparkleFall linear infinite;
 
 }
 
@@ -877,13 +873,11 @@ grid-template-columns:1fr;
 
     100%{
 
-        transform:
-            translate3d(40px,110vh,0)
-            rotate(360deg);
+    transform:
+        translate3d(70px,140vh,0)
+        rotate(360deg);
 
-        opacity:0;
-
-    }
+}
 
 }
 
@@ -1124,7 +1118,7 @@ grid-template-columns:1fr;
 }
 
 .welcome-monogram{
-    width:120px;
+    width:clamp(300px, 18vw, 180px);
     margin-bottom:20px;
 }
 
@@ -1240,47 +1234,31 @@ grid-template-columns:1fr;
 
 }
 
-@keyframes goldGlow{
-
-    0%,100%{
-
-        text-shadow:
-            0 0 6px rgba(255,215,100,.35),
-            0 0 15px rgba(212,175,55,.25);
-
-    }
-
-    50%{
-
-        text-shadow:
-            0 0 12px #ffe48a,
-            0 0 24px rgba(255,215,0,.60),
-            0 0 40px rgba(212,175,55,.35);
-
-    }
-
-}
-
 /* ===========================
    LUXURY GOLD GLOW
 =========================== */
 
-@keyframes goldGlow{
+@keyframes timelineDotGlow{
 
     0%,100%{
 
-        text-shadow:
-            0 0 6px rgba(255,215,120,.30),
-            0 0 14px rgba(212,175,55,.25);
+        transform:translateX(-50%) scale(1);
+
+        box-shadow:
+            0 0 8px rgba(255,220,120,.7),
+            0 0 18px rgba(255,215,0,.45),
+            0 0 35px rgba(212,175,55,.30);
 
     }
 
     50%{
 
-        text-shadow:
-            0 0 12px rgba(255,240,180,.85),
-            0 0 24px rgba(255,215,0,.55),
-            0 0 42px rgba(212,175,55,.35);
+        transform:translateX(-50%) scale(1.18);
+
+        box-shadow:
+            0 0 14px rgba(255,245,180,1),
+            0 0 28px rgba(255,220,120,.9),
+            0 0 55px rgba(212,175,55,.65);
 
     }
 
@@ -1506,25 +1484,6 @@ grid-template-columns:1fr;
 
 }
 
-@keyframes testGlow{
-
-    0%{
-        transform:scale(1);
-        background:red;
-    }
-
-    50%{
-        transform:scale(1.1);
-        background:lime;
-    }
-
-    100%{
-        transform:scale(1);
-        background:red;
-    }
-
-}
-
 @keyframes textGlow{
 
     0%,100%{
@@ -1543,5 +1502,118 @@ grid-template-columns:1fr;
             0 0 30px rgba(212,175,55,.4);
 
     }
+
+}
+
+#enterButton span{
+
+    animation:textGlow 2.8s ease-in-out infinite;
+
+}
+
+.sparkle-glow{
+
+    background:#FFD766;
+
+    box-shadow:
+        0 0 8px rgba(255,220,120,.8),
+        0 0 20px rgba(255,215,0,.5);
+
+}
+
+/* ===========================
+   CLOSING BIBLE VERSE
+=========================== */
+
+.closing-verse{
+
+    padding:120px 30px 140px;
+
+    text-align:center;
+
+}
+
+.verse-divider{
+
+    color:var(--gold);
+
+    font-size:1.8rem;
+
+    margin-bottom:35px;
+
+    text-shadow:
+        0 0 10px rgba(212,175,55,.45);
+
+}
+
+.verse-text{
+
+    max-width:720px;
+
+    margin:0 auto;
+
+    font-family:"Cormorant Garamond", serif;
+
+    font-size:2rem;
+
+    font-style:italic;
+
+    line-height:1.8;
+
+    color:rgba(255, 215, 107, 0.92);
+
+}
+
+.verse-reference{
+
+    margin-top:28px;
+
+    color:var(--gold);
+
+    letter-spacing:8px;
+
+    text-transform:uppercase;
+
+    font-size:.95rem;
+
+}
+
+@media(max-width:768px){
+
+    .closing-verse{
+
+        padding:90px 24px 110px;
+
+    }
+
+    .verse-text{
+
+        font-size:1.5rem;
+
+    }
+
+}
+
+/* ===========================
+   SCROLL ANIMATIONS
+=========================== */
+
+.fade-section{
+
+    opacity:0;
+
+    transform:translateY(50px);
+
+    transition:
+        opacity .9s ease,
+        transform .9s ease;
+
+}
+
+.fade-section.show{
+
+    opacity:1;
+
+    transform:translateY(0);
 
 }

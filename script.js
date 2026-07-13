@@ -86,18 +86,24 @@ setInterval(updateCountdown, 1000);
 
 const sparkleContainer = document.querySelector(".sparkles");
 
-for(let i = 0; i < 120; i++){
+for(let i = 0; i < 180; i++){
 
     const s = document.createElement("div");
-    if (Math.random() < 0.12) {
+    const r = Math.random();
+
+if (r < 0.10){
 
     s.classList.add("sparkle-star");
+
+}else if(r < 0.30){
+
+    s.classList.add("sparkle-glow");
 
 }
 
     s.classList.add("sparkle");
 
-    const size = Math.random()*3 + .8;
+    const size = Math.random()*5 + 1;
 
     s.style.width = size + "px";
     s.style.height = size + "px";
@@ -105,16 +111,43 @@ for(let i = 0; i < 120; i++){
     s.style.left = Math.random()*100 + "%";
 
     s.style.animationDuration =
-        (Math.random()*18 + 18) + "s," +
-        (Math.random()*3 + 3) + "s";
+    (Math.random()*18 + 18) + "s";
 
-    s.style.animationDelay =
-        (-Math.random()*20) + "s," +
-        (-Math.random()*4) + "s";
+s.style.animationDelay =
+    -(Math.random() * 36) + "s";
 
     s.style.opacity =
         Math.random()*0.45 + 0.25;
 
+        s.style.filter =
+`blur(${Math.random()*1.2}px)`;
+
     sparkleContainer.appendChild(s);
 
 }
+
+// Scroll Fade Animation
+
+const fadeSections = document.querySelectorAll(".fade-section");
+
+const observer = new IntersectionObserver((entries)=>{
+
+    entries.forEach(entry=>{
+
+        if(entry.isIntersecting){
+
+            entry.target.classList.add("show");
+
+        }
+
+    });
+
+},{
+    threshold:.05
+});
+
+fadeSections.forEach(section=>{
+
+    observer.observe(section);
+
+});
